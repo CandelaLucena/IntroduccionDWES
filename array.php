@@ -123,6 +123,7 @@
 ?>
 <br>
 <?php
+    //Ordenar una cadena metiendola en un array
     $cadenaTemperatura = "20 30 25 32 40 10 28 29 10 4 2 20 21 24 16 17 19";
     $arrayTemperatura = explode(" ",$cadenaTemperatura);
     asort($arrayTemperatura);
@@ -134,9 +135,69 @@
     }
     
     echo("Valores maximos <br>");
-    for($i = count($arrayTemperaturaOrdenado); 
-    $i >= count($arrayTemperaturaOrdenado) - 5 ; 
-    $i--){
-        echo($arrayTemperaturaOrdenado[$i]."<br>");
+    for($i = count($arrayTemperaturaOrdenado);$i >= count($arrayTemperaturaOrdenado) - 5;$i--){
+        echo($arrayTemperaturaOrdenado[$i-1]."<br>");
     }
+?>
+<br>
+<?php
+    //Ordenar un array asociativo
+    $arrayAsociativo = array("nombre1" => "descripcion123",
+    "nombre2" => "descripcion1",
+    "nombre3" => "descripcion12");
+
+    /*
+    function funcionComparacion($a,$b){
+        if(strlen($a) == strlen($b)){
+            return 0;
+        }else if(strlen($a) > strlen($b)){
+            return -1;
+        }else if(strlen($a) < strlen($b)){
+            return 1;
+        }
+    }
+    */
+    function funcionComparacion($a,$b){
+        if(strlen($a) == strlen($b)){
+            return 0;
+        } return (strlen($a) > strlen($b) ? -1 : 1);
+    }
+    uasort($arrayAsociativo, "funcionComparacion");
+    print_r($arrayAsociativo);
+    /*
+    foreach ($arrayAsociativo as $valor1) {
+        echo($valor1."<br>");
+    }
+    */
+?>
+<br>
+<?php
+    //Generar contraseña aleatoria segun parametros
+    //Nunca echo dentro de metodos
+    function rand_Pass($upper = 1, $lower = 5, $numeric = 3, $other = 2){
+        $arrayAleatorio = [];
+
+        for($i=0;$i<$upper;$i++){
+            //Lo mismo
+            $arrayAleatorio[] =  chr(rand(65, 90));
+        }
+        for($i=0;$i<$lower;$i++){
+            //Que esto
+            array_push($arrayAleatorio, chr(rand(97, 122)));
+        }
+        for($i=0;$i<$numeric;$i++){
+            array_push($arrayAleatorio, chr(rand(48, 57)));
+        }
+        for($i=0;$i<$other;$i++){
+            array_push($arrayAleatorio, chr(rand(33, 47)));
+        }
+        
+        shuffle($arrayAleatorio);
+        return implode($arrayAleatorio);
+    }
+    echo(rand_Pass());
+?>
+<br>
+<?php
+    
 ?>
