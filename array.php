@@ -199,5 +199,21 @@
 ?>
 <br>
 <?php
-    
+    //Calcular longitud maxima y minima de las cadenas de un array
+    $arrayCadenas = array("cadena123","cadena1","cadena1234","cadena123456","cadena12");
+    function compararCadenas($cadena1){
+        return strlen($cadena1);
+    }
+    $arrayLongitudes = array_map("compararCadenas",$arrayCadenas);
+    echo(max($arrayLongitudes)."<br>");
+    echo(min($arrayLongitudes))
+?>
+<br>
+<?php
+    $CadenaDividir = "Hola me llamo Candela";
+
+    function partList($cadenaADividir){
+        $arrayDividido = str_split($cadenaADividir);
+        
+    }
 ?>
