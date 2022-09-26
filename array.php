@@ -210,10 +210,18 @@
 ?>
 <br>
 <?php
-    $CadenaDividir = "Hola me llamo Candela";
+    $cadenaDividir = "Hola me llamo Candela";
 
     function partList($cadenaADividir){
-        $arrayDividido = str_split($cadenaADividir);
-        
+        $arrayDividido = explode(" ", $cadenaADividir);
+        $arrayJunto = [];
+
+        for($i=1; $i<count($arrayDividido); $i++){
+            $string1 = implode(array_slice($arrayDividido,0,$i));
+            $string2 = implode(array_slice($arrayDividido,$i,count($arrayDividido)));
+            $arrayJunto = [$string1, $string2];
+        }
+        print_r($arrayJunto);
     }
+    partList($cadenaDividir);
 ?>
