@@ -215,13 +215,15 @@
     function partList($cadenaADividir){
         $arrayDividido = explode(" ", $cadenaADividir);
         $arrayJunto = [];
-
+        
         for($i=1; $i<count($arrayDividido); $i++){
-            $string1 = implode(array_slice($arrayDividido,0,$i));
-            $string2 = implode(array_slice($arrayDividido,$i,count($arrayDividido)));
+            $string1 = implode(" ", array_slice($arrayDividido,0,$i));
+            $string2 = implode(" ", array_slice($arrayDividido,$i,count($arrayDividido)));
             $arrayJunto = [$string1, $string2];
+            $arrayFusion[] = $arrayJunto;
         }
-        print_r($arrayJunto);
+        print_r($arrayFusion);
     }
     partList($cadenaDividir);
 ?>
+<br>
